@@ -91,6 +91,7 @@ class TaskController extends Controller
             return ApiResponse::error('contacte con su administrador: '.$e->getMessage(),500,);
         }
     }
+    
     public function destroy(Request $request,$id){
         try{
             if(!$id){
