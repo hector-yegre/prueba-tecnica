@@ -69,7 +69,7 @@ class TaskController extends Controller
         
     }
     public function update(StoreTask $request,$id){
-      
+        
         try {
 
             if(!$id){
@@ -81,7 +81,10 @@ class TaskController extends Controller
             if(!$task){
                 return ApiResponse::error("Tarea con el id {$task} encontrada",404);
             }
-            $task->update($request->all());
+            $task->task_name = $request->task_name;
+            $task->task_description = $request->task_description;
+            $task->save();
+
             return ApiResponse::success('Tarea actualizada correctamente !',200,$task);
             
         } catch (\Exception $e) {
@@ -99,6 +102,7 @@ class TaskController extends Controller
             }
             $task->task_delete = 0;
             $task->save();
+
             return ApiResponse::success('Tarea Eliminada Correctamente',200,  $task);
         }catch(\Exception $e){
             return ApiResponse::error('contacte con su administrador: '.$e->getMessage(),500,);
