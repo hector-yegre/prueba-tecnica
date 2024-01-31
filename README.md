@@ -1,6 +1,9 @@
 <h1>pasos para ejecutar backend...</h1>
 <ol>
-    <li>asdasdasdasd</li>
+    <li>Despues de dclonar: ejecuta composer installl</li>
+    <li>Despues de dclonar: Configura base datos en las variables de entorno env si no aparece cipia el example.evn lo renombras a env. y en la parte de base de datos agrea el nombre todo_list</li>
+    <li>Despues de dclonar: corre las migraciones con el comando php artisan migrate installl</li>
+    <li>Para hacer peticion con postmap debe configurar los header con Accept: Aplication/json</li>   
 </ol>
 
 
