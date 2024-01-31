@@ -120,6 +120,8 @@ class TaskController extends Controller
             return ApiResponse::success('Tarea completada',200,  $task);
         }catch(\Exception $e){
             return ApiResponse::error('contacte con su administrador: '.$e->getMessage(),500,);
+        
+        
         }
 
     }
