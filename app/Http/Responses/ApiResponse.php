@@ -6,10 +6,12 @@
         public static function success($message='Success',$statusCode = 201, $data = []) {
            
             return response()->json([
+                
                 'message'=>$message,
                 'status' =>$statusCode,
                 'error'  =>false,
                 'data'   =>$data,
+
             ],$statusCode);
         }    
         

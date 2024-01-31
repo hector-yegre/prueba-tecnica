@@ -69,29 +69,23 @@ class TaskController extends Controller
         
     }
     public function update(StoreTask $request,$id){
-        
+       
         try {
-
             if(!$id){
                 return ApiResponse::error("El id de la tarea es requerido",404);
             }
 
-            $task = Task::find($id);
-
-            if(!$task){
-                return ApiResponse::error("Tarea con el id {$task} encontrada",404);
-            }
-            $task->task_name = $request->task_name;
+            $task = Task::findOrFail($id);
             $task->task_description = $request->task_description;
-            $task->save();
+            $task->update($request->all());
 
-            return ApiResponse::success('Tarea actualizada correctamente !',200,$task);
+            return ApiResponse::success('Tarea actualizada correctamente !',200,$request->task_description);
             
         } catch (\Exception $e) {
-            return ApiResponse::error('contacte con su administrador: '.$e->getMessage(),500,);
+            return ApiResponse::error('contacte con su administrador: '.$e->getMessage(),500);
         }
     }
-    
+
     public function destroy(Request $request,$id){
         try{
             if(!$id){
